@@ -1,0 +1,15 @@
+{
+  "type": "module",
+  "scripts": {
+    "create-admin": "node Backend/createAdmin.js",
+    "reset-admin": "node Backend/resetAdmin.js"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.0.3",
+    "qrcode.react": "^4.2.0",
+    "recharts": "^2.15.3"
+  }
+}
