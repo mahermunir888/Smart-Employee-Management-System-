@@ -1,7 +1,7 @@
 import React from 'react'
 import logo from '../Logo2.png'
 import { NavLink } from 'react-router-dom'
-import { FaBuilding, FaCalendarAlt, FaCogs, FaMoneyBillWave, FaTachometerAlt, FaUsers, FaQrcode } from 'react-icons/fa';
+import { FaBuilding, FaCalendarAlt, FaCogs, FaMoneyBillWave, FaTachometerAlt, FaUsers, FaClipboardList } from 'react-icons/fa';
 import { useAuth } from '../../context/authcontext';
 
 function Sidebar() {
@@ -30,6 +30,13 @@ function Sidebar() {
           <span>My Profile</span>
         </NavLink>
 
+        <NavLink to="/employee-dashboard/attendance/records" className={({ isActive }) =>
+          `${isActive ? "bg-teal-500" : ""} flex items-center space-x-4 py-2.5 px-4 rounded`
+        }>
+          <FaClipboardList />
+          <span>Attendance</span>
+        </NavLink>
+
         <NavLink to="/employee-dashboard/leaves" className={({ isActive }) =>
           `${isActive ? "bg-teal-500" : ""} flex items-center space-x-4 py-2.5 px-4 rounded`
         } >
@@ -42,13 +49,6 @@ function Sidebar() {
         }>
           <FaMoneyBillWave />
           <span>Salary</span>
-        </NavLink>
-
-        <NavLink to="/employee-dashboard/attendance/qr-code" className={({ isActive }) =>
-          `${isActive ? "bg-teal-500" : ""} flex items-center space-x-4 py-2.5 px-4 rounded`
-        }>
-          <FaQrcode />
-          <span>My QR Code</span>
         </NavLink>
 
         <NavLink to="/employee-dashboard/setting" className={({ isActive }) =>

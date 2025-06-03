@@ -19,9 +19,9 @@ import AddLeave from './components/Leave/Add'
 import Setting from './components/EmployeeDashboard/Setting';
 import Table from './components/Leave/Table';
 import Detail from './components/Leave/Detail';
-import QRCodeComponent from './components/EmployeeDashboard/QRCode';
 import Scanner from './components/Attendance/Scanner';
 import AttendanceRecords from './pages/AttendanceRecords';
+import EmployeeAttendanceRecords from './components/EmployeeDashboard/AttendanceRecords';
 
 function App() {
   return (
@@ -64,7 +64,7 @@ function App() {
         <Route path="add-leave" element={<AddLeave />} />
         <Route path="salary/:id" element={<ViewSalary />} />
         <Route path="setting" element={<Setting />} />
-        <Route path="attendance/qr-code" element={<QRCodeComponent />} />
+        <Route path="attendance/records" element={<EmployeeAttendanceRecords />} />
       </Route>
     </Routes>
  

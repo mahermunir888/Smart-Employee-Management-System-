@@ -65,20 +65,22 @@ const getAttendance = async (req, res) => {
     const { employeeId } = req.params;
     const { startDate, endDate } = req.query;
 
-    // First find employee by userId if a string is provided
-    let employeeObjectId = employeeId;
-    if (typeof employeeId === 'string' && !employeeId.match(/^[0-9a-fA-F]{24}$/)) {
-      const employee = await Employee.findOne({ userId: employeeId });
-      if (!employee) {
-        return res.status(404).json({
-          success: false,
-          error: "Employee not found"
-        });
-      }
-      employeeObjectId = employee._id;
+    console.log('Fetching attendance for employeeId:', employeeId);
+
+    // First find employee by userId
+    const employee = await Employee.findOne({ userId: employeeId });
+    
+    if (!employee) {
+      console.log('Employee not found for userId:', employeeId);
+      return res.status(404).json({
+        success: false,
+        error: "Employee not found"
+      });
     }
 
-    let query = { employeeId: employeeObjectId };
+    console.log('Found employee:', employee._id);
+
+    let query = { employeeId: employee._id };
 
     // Add date range to query if provided
     if (startDate && endDate) {
@@ -98,6 +100,8 @@ const getAttendance = async (req, res) => {
           select: 'name'
         }
       });
+
+    console.log('Found attendance records:', attendance.length);
 
     return res.status(200).json({
       success: true,
